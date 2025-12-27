@@ -94,14 +94,27 @@ function App() {
                 y: 40,
                 transition: { duration: 0.3 },
               }}
-              className="flex flex-col items-center gap-4 py-16"
+              className="flex flex-col items-center gap-2 py-16"
             >
               <CardStack
                 cats={cats}
                 currentIndex={currentIndex}
                 onSwipe={handleSwipe}
               />
-
+              {/* Instruction */}
+              {currentIndex === 0 && (
+                <motion.p
+                  animate={{ opacity: [0.4, 1, 0.4] }}
+                  transition={{
+                    duration: 2,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                  }}
+                  className="text-sm text-gray-500 font-semibold select-none"
+                >
+                  Swipe left or right
+                </motion.p>
+              )}
               {/* Buttons */}
               <div className="flex justify-center gap-2 w-full">
                 <motion.button
