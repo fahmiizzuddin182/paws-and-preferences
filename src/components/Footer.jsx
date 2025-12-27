@@ -8,7 +8,7 @@ function Footer() {
       · Tailwind · Motion
     </>,
     <>
-      Images are fetched from the{" "}
+      Images fetched from{" "}
       <span className="font-semibold">CATAAS (Cat as a Service)</span> API
     </>,
   ];
