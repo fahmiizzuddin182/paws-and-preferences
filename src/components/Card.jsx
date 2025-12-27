@@ -6,6 +6,7 @@ function Card({ cats, currentIndex, onSwipe }) {
 
   // Rotate between -20° and +20° based on swipe
   const rotate = useTransform(x, [-130, 0, 130], [-20, 0, 20]);
+  const y = useTransform(x, [-130, 0, 130], [30, 0, 30]);
 
   // Change border color based on swipe
   const borderColor = useTransform(
@@ -53,11 +54,11 @@ function Card({ cats, currentIndex, onSwipe }) {
   return (
     <motion.div
       drag="x"
-      style={{ x, opacity, rotate, borderColor, borderWidth: 2 }}
+      style={{ x, y, opacity, rotate, borderColor, borderWidth: 4 }}
       dragElastic={0.8}
       dragMomentum={true}
       onDragEnd={handleDragEnd}
-      initial={{ scale: 0.95, borderRadius: "1.5rem" }}
+      initial={{ scale: 0.9, borderRadius: "1.5rem" }}
       animate={{ scale: 1 }}
       whileDrag={{ borderRadius: "3rem" }}
       transition={{

@@ -13,11 +13,11 @@ function CardStack({ cats, currentIndex, onSwipe }) {
     <div className="relative w-96 max-w-sm aspect-3/4 max-h-[75dvh]">
       {/* Back card (next) */}
       {cats[currentIndex + 1] && (
-        <div className="absolute inset-0 scale-95">
+        <div className="absolute inset-0 scale-90">
           <img
             src={cats[currentIndex + 1].url}
             alt="Next cat"
-            className="w-full h-full object-cover rounded-[3rem] shadow-md blur-xs"
+            className="w-full h-full object-cover rounded-3xl shadow-md"
           />
         </div>
       )}

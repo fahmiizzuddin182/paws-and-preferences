@@ -94,7 +94,7 @@ function App() {
                 y: 40,
                 transition: { duration: 0.3 },
               }}
-              className="flex flex-col items-center gap-2 pt-10 pb-8"
+              className="flex flex-col items-center gap-2 pt-2 pb-8"
             >
               <CardStack
                 cats={cats}

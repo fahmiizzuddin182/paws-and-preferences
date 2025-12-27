@@ -1,8 +1,13 @@
 import { motion } from "motion/react";
-import { useRef } from "react";
+import { useEffect } from "react";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
 
 function Summary({ likedCats }) {
+  // Scroll to top whenever this component mounts
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-center w-96 px-2 bg-[#e6e6e6] pt-28 pb-12">
       {/* Summary text */}
