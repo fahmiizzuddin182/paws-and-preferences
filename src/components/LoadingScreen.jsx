@@ -4,7 +4,7 @@ import logoUrl from "../assets/Paws LOGO.svg";
 function LoadingScreen({ progress }) {
   return (
     <motion.div
-      className="flex flex-col items-center justify-center h-screen w-screen bg-[#e6e6e6] p-4"
+      className="flex flex-col items-center justify-center w-screen p-4"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

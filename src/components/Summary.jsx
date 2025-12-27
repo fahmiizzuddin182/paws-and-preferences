@@ -3,10 +3,8 @@ import { useRef } from "react";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
 
 function Summary({ likedCats }) {
-  const scrollRef = useRef(null);
-
   return (
-    <div className="flex flex-col items-center justify-center w-96 px-2 bg-[#e6e6e6] py-16">
+    <div className="flex flex-col items-center justify-center w-96 px-2 bg-[#e6e6e6] pt-28 pb-12">
       {/* Summary text */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
@@ -18,18 +16,14 @@ function Summary({ likedCats }) {
         <h1 className="text-[#ed985f] mb-4">{likedCats.length}</h1>
       </motion.div>
 
-      {/* Images Container */}
-      <motion.div
-        ref={scrollRef}
-        className="flex flex-col items-center gap-4 flex-1 w-full p-2"
-      >
+      {/* Images container */}
+      <motion.div className="flex flex-col items-center gap-4 flex-1 w-full p-2">
         {likedCats.map((cat, index) => (
           <motion.div
             key={cat.id ?? index}
             className="relative"
             initial={{ opacity: 0, y: 30, scale: 0.96 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ root: scrollRef }}
             transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.03 }}
           >
             <img
@@ -39,6 +33,7 @@ function Summary({ likedCats }) {
               draggable={false}
             />
 
+            {/* Tags overlay */}
             {cat.tags?.length > 0 && (
               <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-2">
                 {cat.tags.filter(Boolean).map((tag, i) => (
@@ -62,7 +57,6 @@ function Summary({ likedCats }) {
           whileTap={{ scale: 0.8 }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ root: scrollRef }}
           transition={{ duration: 0.5 }}
           onClick={() => window.location.reload()}
           className="p-2 rounded-full shadow-xl w-fit mb-6"

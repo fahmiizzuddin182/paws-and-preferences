@@ -3,8 +3,16 @@ import { motion, useMotionValue, useTransform, animate } from "motion/react";
 function Card({ cats, currentIndex, onSwipe }) {
   const x = useMotionValue(0);
   const opacity = useMotionValue(1);
-  // Rotate between -12° and +12° based on drag
-  const rotate = useTransform(x, [-150, 0, 150], [-20, 0, 20]);
+
+  // Rotate between -20° and +20° based on swipe
+  const rotate = useTransform(x, [-130, 0, 130], [-20, 0, 20]);
+
+  // Change border color based on swipe
+  const borderColor = useTransform(
+    x,
+    [-150, 0, 150],
+    ["#ef4444", "rgba(255,255,255,0)", "#22c55e"]
+  );
 
   if (!cats || cats.length === 0) {
     return null;
@@ -20,7 +28,7 @@ function Card({ cats, currentIndex, onSwipe }) {
     const offset = info.offset.x;
 
     if (offset > 100) {
-      // Like
+      // Handle right swipe (Like)
       Promise.all([
         animate(x, 300, { duration: 0.3 }),
         animate(opacity, 0, { duration: 0.25 }),
@@ -28,7 +36,7 @@ function Card({ cats, currentIndex, onSwipe }) {
         onSwipe("right");
       });
     } else if (offset < -100) {
-      // Dislike
+      // Handle left swipe (Dislike)
       Promise.all([
         animate(x, -300, { duration: 0.3 }),
         animate(opacity, 0, { duration: 0.25 }),
@@ -45,7 +53,7 @@ function Card({ cats, currentIndex, onSwipe }) {
   return (
     <motion.div
       drag="x"
-      style={{ x, opacity, rotate }}
+      style={{ x, opacity, rotate, borderColor, borderWidth: 2 }}
       dragElastic={0.8}
       dragMomentum={true}
       onDragEnd={handleDragEnd}
@@ -63,9 +71,11 @@ function Card({ cats, currentIndex, onSwipe }) {
         src={currentCat.url}
         alt="Cat"
         className="w-full max-w-sm aspect-3/4 max-h-[75dvh] object-cover shadow-lg select-none bg-[#e6e6e6]"
-        draggable={false}
+        draggable={false} // Prevent native drag interfering with Motion drag
       />
+
       {/* Tags overlay */}
+      {/* Tags retrieved from cataas metadata */}
       <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
         {currentCat.tags
           .filter((tag) => tag.trim() !== "") // Ignore empty strings or whitespace
