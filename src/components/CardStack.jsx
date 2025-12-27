@@ -5,7 +5,7 @@ function CardStack({ cats, currentIndex, onSwipe }) {
   if (currentIndex >= cats.length) return null;
 
   return (
-    <div className="relative w-96 h-155 max-[376px]:h-125">
+    <div className="relative w-96 max-w-sm aspect-3/4 max-h-[75dvh]">
       {/* Back card (next) */}
       {cats[currentIndex + 1] && (
         <div className="absolute inset-0 scale-95">

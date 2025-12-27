@@ -4,7 +4,7 @@ function Card({ cats, currentIndex, onSwipe }) {
   const x = useMotionValue(0);
   const opacity = useMotionValue(1);
   // Rotate between -12° and +12° based on drag
-  const rotate = useTransform(x, [-200, 0, 200], [-12, 0, 12]);
+  const rotate = useTransform(x, [-150, 0, 150], [-20, 0, 20]);
 
   if (!cats || cats.length === 0) {
     return null;
@@ -19,7 +19,7 @@ function Card({ cats, currentIndex, onSwipe }) {
   const handleDragEnd = (_, info) => {
     const offset = info.offset.x;
 
-    if (offset > 170) {
+    if (offset > 100) {
       // Like
       Promise.all([
         animate(x, 300, { duration: 0.3 }),
@@ -27,7 +27,7 @@ function Card({ cats, currentIndex, onSwipe }) {
       ]).then(() => {
         onSwipe("right");
       });
-    } else if (offset < -170) {
+    } else if (offset < -100) {
       // Dislike
       Promise.all([
         animate(x, -300, { duration: 0.3 }),
@@ -37,7 +37,7 @@ function Card({ cats, currentIndex, onSwipe }) {
       });
     } else {
       // Cancel, snap back
-      animate(x, 0, { type: "spring", stiffness: 300 });
+      animate(x, 0, { type: "spring", stiffness: 200 });
       animate(opacity, 1, { duration: 0.2 });
     }
   };
@@ -46,14 +46,14 @@ function Card({ cats, currentIndex, onSwipe }) {
     <motion.div
       drag="x"
       style={{ x, opacity, rotate }}
-      dragElastic={0.4}
-      dragMomentum={false}
+      dragElastic={0.8}
+      dragMomentum={true}
       onDragEnd={handleDragEnd}
       initial={{ scale: 0.95, borderRadius: "1.5rem" }}
       animate={{ scale: 1 }}
       whileDrag={{ borderRadius: "3rem" }}
       transition={{
-        scale: { type: "spring", stiffness: 300, damping: 15 },
+        scale: { type: "spring", stiffness: 180, damping: 18 },
         borderRadius: { duration: 0.15, ease: "easeOut" },
       }}
       className="relative overflow-x-hidden rounded-3xl flex items-center justify-center cursor-grab active:cursor-grabbing"
@@ -62,7 +62,7 @@ function Card({ cats, currentIndex, onSwipe }) {
       <motion.img
         src={currentCat.url}
         alt="Cat"
-        className="w-96 h-155 max-[376px]:h-125 object-cover shadow-lg select-none bg-[#e6e6e6]"
+        className="w-full max-w-sm aspect-3/4 max-h-[75dvh] object-cover shadow-lg select-none bg-[#e6e6e6]"
         draggable={false}
       />
       {/* Tags overlay */}

@@ -6,22 +6,22 @@ function Summary({ likedCats }) {
   const scrollRef = useRef(null);
 
   return (
-    <div className="flex flex-col items-center justify-center w-96 h-screen px-2 bg-[#e6e6e6]">
+    <div className="flex flex-col items-center justify-center w-96 px-2 bg-[#e6e6e6] py-16">
       {/* Summary text */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className="flex flex-col font-sans font-semibold text-start text-[#001F3D] px-2 w-full rounded-xl shadow-4xl gap-1 mt-26"
+        className="flex flex-col font-sans font-semibold text-start text-[#001F3D] px-2 w-full rounded-xl shadow-4xl gap-1"
       >
         <h2>Number of cats liked</h2>
         <h1 className="text-[#ed985f] mb-4">{likedCats.length}</h1>
       </motion.div>
 
-      {/* Scrollable container */}
+      {/* Images Container */}
       <motion.div
         ref={scrollRef}
-        className="flex flex-col items-center gap-4 overflow-y-auto flex-1 w-full p-2 scrollbar-hide scroll-smooth"
+        className="flex flex-col items-center gap-4 flex-1 w-full p-2"
       >
         {likedCats.map((cat, index) => (
           <motion.div

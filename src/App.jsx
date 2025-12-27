@@ -73,7 +73,7 @@ function App() {
   };
 
   return (
-    <main className="flex flex-col items-center overflow-x-hidden min-h-screen min-w-screen">
+    <main className="flex flex-col overflow-x-hidden items-center min-w-screen">
       <AnimatePresence mode="wait">
         {isLoading ? (
           <LoadingScreen key="loading" progress={progress} />
@@ -94,7 +94,7 @@ function App() {
                 y: 40,
                 transition: { duration: 0.3 },
               }}
-              className="flex flex-col flex-1 items-center gap-4 mt-16"
+              className="flex flex-col items-center gap-4 py-16"
             >
               <CardStack
                 cats={cats}
@@ -103,11 +103,11 @@ function App() {
               />
 
               {/* Buttons */}
-              <div className="flex justify-center gap-2 w-full mb-6">
+              <div className="flex justify-center gap-2 w-full">
                 <motion.button
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.8 }}
-                  className="p-2 rounded-full shadow-2xl"
+                  className="p-2 rounded-full shadow-xl"
                   onClick={() => handleSwipe("left")}
                 >
                   <XMarkIcon className="h-14 w-14" />
@@ -116,7 +116,7 @@ function App() {
                 <motion.button
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.8 }}
-                  className="p-2 rounded-full shadow-2xl"
+                  className="p-2 rounded-full shadow-xl"
                   onClick={() => handleSwipe("right")}
                 >
                   <HeartIcon className="h-14 w-14" />
