@@ -1,10 +1,15 @@
 import { motion } from "motion/react";
 import logoUrl from "../assets/Paws LOGO.svg";
+import { useEffect } from "react";
 
 function LoadingScreen({ progress }) {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
+
   return (
     <motion.div
-      className="flex flex-col items-center justify-center w-screen p-4"
+      className="flex flex-col items-center justify-center w-screen p-4 touch-pan-x flex-1"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
