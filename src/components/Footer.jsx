@@ -25,7 +25,7 @@ function Footer() {
   }, []);
 
   return (
-    <footer className="flex items-center justify-center text-[10px] font-sans text-gray-500 pointer-events-none">
+    <footer className="w-full flex items-center justify-center text-[10px] font-sans text-gray-500 p-1 h-8">
       <AnimatePresence mode="wait">
         <motion.span
           key={index}

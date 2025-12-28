@@ -73,7 +73,7 @@ function App() {
   };
 
   return (
-    <main className="min-h-dvh flex flex-col overflow-x-hidden items-center min-w-screen">
+    <main className="min-h-dvh flex flex-col items-center min-w-screen">
       <AnimatePresence mode="wait">
         {isLoading ? (
           <LoadingScreen key="loading" progress={progress} />
@@ -94,7 +94,7 @@ function App() {
                 y: 40,
                 transition: { duration: 0.3 },
               }}
-              className="flex flex-col items-center gap-2 pt-8 pb-4 "
+              className="flex flex-col items-center gap-2 pb-4 "
             >
               <CardStack
                 cats={cats}
