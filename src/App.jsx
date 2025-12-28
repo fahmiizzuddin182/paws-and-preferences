@@ -17,11 +17,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
 
-  // Scroll to top whenever this component mounts
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, []);
-
   useEffect(() => {
     if (fetchedRef.current) return;
     fetchedRef.current = true;
@@ -99,7 +94,7 @@ function App() {
                 y: 40,
                 transition: { duration: 0.3 },
               }}
-              className="flex flex-col items-center gap-2 pt-4 pb-8"
+              className="flex flex-col items-center gap-2 pt-8 pb-4 "
             >
               <CardStack
                 cats={cats}

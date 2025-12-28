@@ -9,7 +9,7 @@ function Summary({ likedCats }) {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center w-96 px-2 bg-[#e6e6e6] pt-28 pb-12">
+    <div className="flex flex-col items-center justify-center w-96 px-2 bg-[#e6e6e6] pt-28 pb-8">
       {/* Summary text */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
