@@ -9,7 +9,7 @@ function LoadingScreen({ progress }) {
 
   return (
     <motion.div
-      className="flex flex-col items-center justify-center w-screen p-4 flex-1"
+      className="flex flex-col items-center justify-center w-screen p-4"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
